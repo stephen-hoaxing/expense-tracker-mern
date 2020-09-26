@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
 import { changeStyle } from "../utils/format";
 import classNames from "classnames";
+import { useForm } from "../utils/useForm";
 
 const AddTransaction = () => {
   const { addTransaction, theme } = useContext(ExpenseContext);
@@ -12,20 +13,23 @@ const AddTransaction = () => {
     "light-border": theme === "light",
     "dark-border": theme === "dark",
   });
-  const submitForm = (e) => {
+
+  const submitForm = () => {
     const newTransaction = {
-      text,
-      amount: +amount,
+      text: values.text,
+      amount: +values.amount,
     };
-    e.preventDefault();
     addTransaction(newTransaction);
-    setText("");
-    setAmount(0);
+    values.text = "";
+    values.amount = 0;
   };
+
+  const [values, handleChange, handleSubmit] = useForm(submitForm);
+
   return (
     <div className="form-container">
       <div className="main-container">
-        <form className="form" onSubmit={submitForm}>
+        <form className="form" onSubmit={handleSubmit}>
           <div className="form-control">
             <label htmlFor="text" className={styleLabel}>
               Text
@@ -33,8 +37,8 @@ const AddTransaction = () => {
             <input
               type="text"
               name="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
+              value={values.text || ""}
+              onChange={handleChange}
               className={styleInput}
             />
           </div>
@@ -45,8 +49,8 @@ const AddTransaction = () => {
             <input
               type="amount"
               name="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              value={values.amount || ""}
+              onChange={handleChange}
               className={styleInput}
             />
           </div>
