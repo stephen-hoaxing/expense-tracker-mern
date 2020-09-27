@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
 import { changeStyle } from "../utils/format";
 import classNames from "classnames";
@@ -6,8 +6,6 @@ import { useForm } from "../utils/useForm";
 
 const AddTransaction = () => {
   const { addTransaction, theme } = useContext(ExpenseContext);
-  const [text, setText] = useState("");
-  const [amount, setAmount] = useState(0);
   const styleLabel = changeStyle(theme, "");
   const styleInput = classNames({
     "light-border": theme === "light",
