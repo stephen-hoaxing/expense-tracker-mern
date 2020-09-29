@@ -10,7 +10,11 @@ export const useForm = (submitCallback) => {
 
   const handleChange = (e) => {
     e.persist();
-    setState((state) => ({ ...state, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setState((state) => ({
+      ...state,
+      [name]: value,
+    }));
   };
 
   return [state, handleChange, handleSubmit];
