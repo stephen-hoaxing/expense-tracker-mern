@@ -29,7 +29,7 @@ beforeEach(() => {
 
 afterEach(cleanup);
 
-it("displays the balance with the comma-delimited format", () => {
+it("displays the balance in a comma-delimited format", () => {
   expect(screen.getByTestId("balance")).toHaveTextContent(
     "Your Balance: $6,000"
   );

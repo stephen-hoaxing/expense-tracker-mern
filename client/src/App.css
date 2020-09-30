@@ -335,7 +335,7 @@ input:checked + .slider:before {
     font-size: 1.4rem;
     position: absolute;
     top: 50%;
-    left: 20%;
+    left: 30%;
     transform: translate(-20%, -50%);
     font-size: 1rem;
   }
@@ -411,7 +411,7 @@ input:checked + .slider:before {
   .switch {
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 60%;
     transform: translate(-70%, -50%);
   }
 

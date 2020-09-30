@@ -5,9 +5,7 @@ const morgan = require("morgan");
 const transactions = require("./routes/transactions");
 const connectDB = require("./config/db");
 
-dotenv.config({
-  path: "./config/config.env",
-});
+dotenv.config();
 
 connectDB();
 
